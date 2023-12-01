@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maltes_Super_Taschenrechner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet"> 
+    <link rel="manifest" href="manifest.webmanifest">
+    <style>
+
+body{
+    font-family: 'Nova Square', sans-serif;
+    margin: 0;
+
+
+}
+
+        table{
+            width: 100%;
+            height: 70vh;
+            background-color: #D3D3D3;
+            color: rgb(0, 0, 0);
+            font-family: 'Nova Square', sans-serif;
+
+
+        }
+        td{
+            width: 25%;
+            text-align: center;
+            font-size: 24px;
+            background-color: #E5E4E2;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        td:hover {
+            background-color:  #D3D3D3;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        #resultArea {
+        height: 30vh;
+        background-color: #D3D3D3;
+        color: #ffffff;
+        font-size: 48px;
+        display: flex;
+        justify-content: flex-end;
+        align-content: flex-end;
+        padding: 24px;
+        box-sizing: border-box;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .DELETE {
+            background-color: #0095ff;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        
+        #DEL {
+            background-color: #0096FF;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        #Get {
+            background-color: #0096FF;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        #Mal {
+            background-color: #0096FF;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        #Plus {
+            background-color: #0096FF;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        #Gleich {
+            background-color: #E5E4E2;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        #DEL:hover {
+            background-color: #0183e0;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25); 
+        }
+        #Get:hover {
+            background-color: #0183e0;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        #Mal:hover {
+            background-color: #0183e0;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        #Plus:hover {
+            background-color: #0183e0;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        #Gleich:hover {
+            background-color:  #D3D3D3;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+        .DELETE:hover {
+            background-color: #0183e0;
+             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+    
+     <script>
+
+        function appendOperation(operation){
+            document.getElementById("resultArea").innerHTML +=operation;
+        }
+
+        function CalculateResult() {
+            let container = document.getElementById("resultArea");
+            let result = eval(container.innerHTML);
+            container.innerHTML = result;
+        }
+
+        function deleteLast() {
+            let container = document.getElementById("resultArea");
+            if(container.innerHTML.endsWith(' ')) {
+                container.innerHTML = container.innerHTML.slice(0, -3);
+            } else {
+            container.innerHTML = container.innerHTML.slice(0, -1);
+        }
+        }
+     </script>
+
+</head>
+<body>
+   <div id="resultArea">
+        
+   </div>
+
+
+
+   <table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="DELETE" onclick="deleteLast()">DEL</td>
+    </tr>
+
+    <tr>
+        <td onclick="appendOperation(7)">7</td>
+        <td onclick="appendOperation(8)">8</td>
+        <td onclick="appendOperation(9)">9</td>
+        <td id="DEL" onclick="appendOperation(' / ')">/</td>
+    </tr>
+ 
+    <tr>
+        <td onclick="appendOperation(4)">4</td>
+        <td onclick="appendOperation(5)">5</td>
+        <td onclick="appendOperation(6)">6</td>
+        <td id="Get" onclick="appendOperation(' * ')">x</td>
+    </tr>
+
+    <tr>
+        <td onclick="appendOperation(1)">1</td>
+        <td onclick="appendOperation(2)">2</td>
+        <td onclick="appendOperation(3)">3</td>
+        <td id="Mal" onclick="appendOperation(' + ')">+</td>
+    </tr>
+
+    <tr>
+        <td onclick="appendOperation(0)">0</td>
+        <td onclick="appendOperation('.')">,</td>
+        <td id="Gleich" onclick="CalculateResult()">=</td>
+        <td id="Plus" onclick="appendOperation(' - ')">-</td>
+    </tr>
+   </table>
+</body>
+</html>
